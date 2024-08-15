@@ -1,12 +1,11 @@
-//Autosplitter by DxtrPog
+// Autosplitter originally created by DxtrPog, corrections and edits by 1K2C3M
+
 state("Raccoon")
 {
     byte loading : 0x0F889A38, 0x50;
-    byte paused : 0x0FE22378, 0x58, 0x1C0, 0x18;
-    byte moving : 0x0F919800, 0x150, 0x658, 0x20, 0x688, 0x8E0, 0x350, 0x68;
-    byte cameraMovement : 0xFE250CD;
-    byte inKiosk : 0x0FE035F0, 0x30, 0xBCC;
-    string40 scene: 0x0FDF3150, 0x78, 0x20, 0xAE0, 0x18;
+    byte paused : 0x0FE22FC0, 0x8, 0xB8;
+    byte moving : 0x0FDF3150, 0x30, 0x418, 0x5A0;
+    string40 scene : 0x0FDF3150, 0x78, 0x20, 0xAE0, 0x18;
 }
 
 init {
@@ -62,7 +61,7 @@ startup
 
 start
 {
-    if(current.moving != 0 && vars.readyToStart == 1 || current.moving == null && vars.readyToStart == 1 || current.cameraMovement != old.cameraMovement && vars.readyToStart == 1) {
+    if(current.moving != 0 && vars.readyToStart == 1 || current.moving == null && vars.readyToStart == 1) {
         vars.readyToStart = 0;
         return true;
     }
